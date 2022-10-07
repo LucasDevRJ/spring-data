@@ -2,6 +2,9 @@ package br.com.alura.spring.data.orm;
 
 import java.util.Date;
 
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 public class Funcionario {
 
 	private Integer id;
@@ -9,6 +12,11 @@ public class Funcionario {
 	private String cpf;
 	private float salario;
 	private Date dataContratacao;
+	@ManyToOne
+	private Cargo cargo;
+	@OneToMany
+	private UnidadeDeTrabalho unidade;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -38,5 +46,21 @@ public class Funcionario {
 	}
 	public void setDataContratacao(Date dataContratacao) {
 		this.dataContratacao = dataContratacao;
+	}
+	
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
+	}
+	
+	public Cargo getCargo() {
+		return cargo;
+	}
+	
+	public void setUnidade(UnidadeDeTrabalho unidade) {
+		this.unidade = unidade;
+	}
+	
+	public UnidadeDeTrabalho getUnidade() {
+		return unidade;
 	}
 }
