@@ -66,4 +66,9 @@ public class CrudCargoService {
 		cargoRepository.save(cargo);
 		System.out.println("Cargo atualizado com sucesso!");
 	}
-}
+	
+	public void visualizar() {
+		Iterable<Cargo> cargos = cargoRepository.findAll();
+		cargos.forEach(cg -> System.out.println(cg));
+	}
+} 
