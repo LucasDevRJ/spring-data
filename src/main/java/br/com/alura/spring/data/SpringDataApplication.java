@@ -29,20 +29,6 @@ public class SpringDataApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		Scanner scanner = new Scanner(System.in);
-		
-		while (system) {
-			System.out.println("Qual ação deseja executar? ");
-			System.out.println("0 - Sair.");
-			System.out.println("1 - Cargo.");
-			
-			int action = scanner.nextInt();
-			
-			if (action == 1) {
-				cargoService.inicial(scanner);
-			} else {
-				system = false;
-			}
-		}
+		cargoService.inicial(scanner);
 	}
-
 }

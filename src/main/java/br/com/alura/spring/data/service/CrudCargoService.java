@@ -11,12 +11,37 @@ import br.com.alura.spring.data.repository.CargoRepository;
 public class CrudCargoService {
 
 	private final CargoRepository cargoRepository;
+	private Boolean system = true;
 	
 	public CrudCargoService(CargoRepository cargoRepository) {
 		this.cargoRepository = cargoRepository;
 	}
 	
 	public void inicial(Scanner scanner) {
+		
+		while (system) {
+			System.out.println("Qual ação deseja executar? ");
+			System.out.println("0 - Sair.");
+			System.out.println("1 - Cargo.");
+			System.out.println("2 - Atualizar.");
+			
+			int action = scanner.nextInt();
+			
+			switch (action) {
+			case 1:
+				salvar(scanner);
+			break;
+			
+			case 2:
+				atualizar(scanner);
+			break;
+
+			default:
+				system = false;
+				break;
+			}
+		}
+		
 		salvar(scanner);
 	}
 	
