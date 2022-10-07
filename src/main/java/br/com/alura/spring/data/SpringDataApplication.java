@@ -1,5 +1,7 @@
 package br.com.alura.spring.data;
 
+import java.util.Scanner;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +13,7 @@ import br.com.alura.spring.data.repository.CargoRepository;
 public class SpringDataApplication implements CommandLineRunner{
 	
 	private CargoRepository repository;
+	private Boolean system = true;
 	
 	//Injeção de dependência
 	public SpringDataApplication(CargoRepository repository) {
@@ -24,6 +27,13 @@ public class SpringDataApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		Scanner scanner = new Scanner(System.in);
+		
+		while (system) {
+			System.out.println("Qual ação deseja executar? ");
+			System.out.println("0 - Sair.");
+		}
+		
 		Cargo cargo = new Cargo();
 		cargo.setDescricao("DESENVOLVEDOR DE SOFTWARE");
 		
