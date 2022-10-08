@@ -1,10 +1,12 @@
 package br.com.alura.spring.data.orm;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity //Indica ao Spring Data que esta classe é uma entidade, para assim criar uma entidade a partir desta classe
@@ -14,8 +16,8 @@ public class Cargo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //gerar os valores automaticamente
 	private Integer id;
 	private String descricao;
-	@OneToOne
-	private Funcionario funcionario;
+	@OneToMany(mappedBy = "cargo")
+	private List<Funcionario> funcionario;
 	
 	public Integer getId() {
 		return id;
@@ -30,11 +32,11 @@ public class Cargo {
 		this.descricao = descricao;
 	}
 	
-	public void setFuncionario(Funcionario funcionario) {
+	public void setFuncionario(List<Funcionario> funcionario) {
 		this.funcionario = funcionario;
 	}
 	
-	public Funcionario getFuncionario() {
+	public List<Funcionario> getFuncionario() {
 		return funcionario;
 	}
 	
