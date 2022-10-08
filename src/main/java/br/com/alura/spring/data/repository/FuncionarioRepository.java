@@ -15,4 +15,7 @@ public interface FuncionarioRepository extends CrudRepository<Funcionario, Integ
 	
 	@Query("SELECT f FROM Funcionario f WHERE f.nome = :nome AND f.salario >= :salario AND f.dataContratacao = :data") //indica que é uma anotação JPQL
 	List<Funcionario> findNomeSalarioMaiorDataContratacao(String nome, Double salario, LocalDate data);
+	
+	@Query(value = "SELECT f FROM Funcionario f WHERE f.dataContratacao > :data", nativeQuery = true)
+	List<Funcionario> findFuncionarioDataContratacao(LocalDate data);
 }
