@@ -11,6 +11,7 @@ import br.com.alura.spring.data.orm.Cargo;
 import br.com.alura.spring.data.service.CrudCargoService;
 import br.com.alura.spring.data.service.CrudFuncionarioService;
 import br.com.alura.spring.data.service.CrudUnidadeDeTrabalhoService;
+import br.com.alura.spring.data.service.RelatoriosService;
 
 @SpringBootApplication //serve para quando iniciado o Spring percorra as anotações que temos para executa-las
 public class SpringDataApplication implements CommandLineRunner{
@@ -18,13 +19,15 @@ public class SpringDataApplication implements CommandLineRunner{
 	private CrudCargoService cargoService;
 	private CrudFuncionarioService funcionarioService;
 	private CrudUnidadeDeTrabalhoService unidadeService;
+	private RelatoriosService relatoriosService;
 	private Boolean system = true;
 	
 	//Injeção de dependência
-	public SpringDataApplication(CrudCargoService cargoService, CrudFuncionarioService funcionarioService, CrudUnidadeDeTrabalhoService unidadeService) {
+	public SpringDataApplication(CrudCargoService cargoService, CrudFuncionarioService funcionarioService, CrudUnidadeDeTrabalhoService unidadeService, RelatoriosService relatoriosService) {
 		this.cargoService = cargoService;
 		this.funcionarioService = funcionarioService;
 		this.unidadeService = unidadeService;
+		this.relatoriosService = relatoriosService;
 	}
 
 	public static void main(String[] args) {
@@ -39,6 +42,7 @@ public class SpringDataApplication implements CommandLineRunner{
 		System.out.println("1 - Cargo");
 		System.out.println("2 - Funcionário");
 		System.out.println("3 - Unidades de Trabalho");
+		System.out.println("4 - Relátorios");
 		System.out.println("Digite a tabela desejada");
 		int opcao = scanner.nextInt();
 		
@@ -54,6 +58,10 @@ public class SpringDataApplication implements CommandLineRunner{
 			
 			case 3:
 				unidadeService.inicial(scanner);
+			break;
+			
+			case 4:
+				relatoriosService.inicial(scanner);
 			break;
 				
 			default:
