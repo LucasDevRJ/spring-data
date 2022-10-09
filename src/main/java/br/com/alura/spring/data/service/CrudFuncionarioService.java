@@ -151,7 +151,10 @@ public class CrudFuncionarioService {
 		System.out.println("Alterado");
 	}
 	
-	private void visualizar() {
+	private void visualizar(Scanner scanner) {
+		System.out.println("Qual página você deseja visualizar");
+		Integer page = scanner.nextInt();
+		
 		Iterable<Funcionario> funcionarios = funcionarioRepository.findAll();
 		funcionarios.forEach(fn -> System.out.println(fn));
 	}
