@@ -21,4 +21,7 @@ public interface FuncionarioRepository extends PagingAndSortingRepository<Funcio
 	//Query criada com a linguagem SQL normal
 	@Query(value = "SELECT * FROM funcionarios f WHERE f.data_contratacao >= :data", nativeQuery = true)
 	List<Funcionario> findFuncionarioDataContratacao(LocalDate data);
+	
+	@Query(value = "SELECT f.id, f.nome, f.salario FROM funcionarios f", nativeQuery = true)
+	void findFuncionarioSalario();
 }
